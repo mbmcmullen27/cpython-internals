@@ -24,4 +24,13 @@
 - (66) **Source-to-source compilers** are compilers written in another language that already has a compiler.
 - (67) If you want to learn more about parsers, then check out the [Lark](https://github.com/lark-parser/lark) project
 
-**[Python reference guide](docs.python.org/3/reference)**
+**[Python reference guide](https://docs.python.org/3/reference)**
+**[with statement/context managers](https://dbader.org/blog/python-context-managers-and-with-statement)
+
+- while statements in python can have an else block
+  ```python
+  while item := next(iterable)
+    print(item)
+  else
+    print("iterable is empty")
+  ```
