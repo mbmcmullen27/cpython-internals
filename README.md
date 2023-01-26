@@ -34,3 +34,10 @@
   else
     print("iterable is empty")
   ```
+
+- when changing the [grammar](./cpython/Grammar/python.gram) regenerate grammar files with `make regen-pegen` and recompile
+
+- (78) To see a verbose readout of the C parser, you can run a debug build of Python with the -d flag
+  ```sh
+  ./python -d ../examples/test_tokens.py
+  ```
