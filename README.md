@@ -25,7 +25,8 @@
 - (67) If you want to learn more about parsers, then check out the [Lark](https://github.com/lark-parser/lark) project
 
 **[Python reference guide](https://docs.python.org/3/reference)**
-**[with statement/context managers](https://dbader.org/blog/python-context-managers-and-with-statement)
+
+**['with' statement/context managers](https://dbader.org/blog/python-context-managers-and-with-statement)**
 
 - while statements in python can have an else block
   ```python
@@ -41,3 +42,38 @@
   ```sh
   ./python -d ../examples/test_tokens.py
   ```
+
+## Configuration and Input
+- you can run a python script by piping python code to the python executable
+  ```sh
+  cat <file> | python
+  ```
+
+### Configuration
+- `./python cpython/Tools/scripts/smelly.py` 
+  - used to check compliance with PEP 7
+- [initconfig.h](cpython/Include/cpython/initconfig.h)
+  - defines preinitialization & runtime configuration structures
+- `./python -m sysconfig`
+  - view build configuration
+
+### Input
+- (89) there are 4 main files that deal with the command-line interface
+  - [Lib/runpy.py](cpython/Lib/runpy.py)
+    - Standard library module for importing Python modules and executing them
+  - [Modules/main.c](cpython/Moduels/main.c)
+    - Functions wrapping the execution of external code, such as from a file, module or input stream
+  - [Programs/python.c](cpython/Programs/python.c)
+    - The entry point for the python executable for Windows, Linux, and macOS. Serves only as a wrapper for Modules/main.c
+  - [Python/pythonrun.c](cpython/Python/pythonrun.c)
+    - Functions wrapping the internal C APPIs for processing inputs from the command line
+
+- (90) Once CPython has the runtime configuration adn the command-line arguments, it can load the code it needs to execute. This task is handlled by pymain_main() inside [Modules/main.c](cpython/Modules/main.c)
+
+- Python input can be given 4 ways
+  1. input from command line
+  1. input from a local module
+      - `python -m <module>` is equivalent to `python -m runpy <module>`
+      - `runpy` module also supports executing directories and ZIP files
+  1. input from a script file or standar input
+  1. input from compiled bytecode
