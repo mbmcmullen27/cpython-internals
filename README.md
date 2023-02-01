@@ -105,6 +105,6 @@
   st = parser.expr('a + 1')
   pprint(parser.st2list(st))
   ```
-  - **NOTE** Python 3.9 deprecated the symbol module and 3.10 removed it
+  - **NOTE** Python 3.9 deprecated the symbol and parser modules and 3.10 removed them
     - [PEP 617](https://peps.python.org/pep-0617/)
     - breaks [parser module example](examples/parser_lexer.py)
