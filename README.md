@@ -108,3 +108,5 @@
   - **NOTE** Python 3.9 deprecated the symbol and parser modules and 3.10 removed them
     - [PEP 617](https://peps.python.org/pep-0617/)
     - breaks [parser module example](examples/parser_lexer.py)
+    - parser replaced by [ast module](https://docs.python.org/3.10/library/ast.html?highlight=parser#ast.parse)
+    - Symbol replaced with SymbolTable
