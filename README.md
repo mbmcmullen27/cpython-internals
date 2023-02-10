@@ -110,3 +110,6 @@
     - breaks [parser module example](examples/parser_lexer.py)
     - parser replaced by [ast module](https://docs.python.org/3.10/library/ast.html?highlight=parser#ast.parse)
     - Symbol replaced with SymbolTable
+      - blog about symtable
+        - [part 1](https://eli.thegreenplace.net/2010/09/18/python-internals-symbol-tables-part-1/)
+        - [part 2](https://eli.thegreenplace.net/2010/09/20/python-internals-symbol-tables-part-2/)

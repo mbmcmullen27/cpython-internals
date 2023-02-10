@@ -4,16 +4,17 @@ import ast
 from pprint import pprint
 
 def lex(expression):
-    symbols = {v: k for k, v in SymbolTable.__dict__.items()
-               if isinstance(v,int)}
-    tokens = {v: k for k, v in token.__dict__.items()
-              if isinstance(v, int)}
-    lexicon = {**symbols, **tokens}
-    st_list = ast.Expr(expression).value
+    # symbols = {v: k for k, v in SymbolTable.get_symbols()
+    #            if isinstance(v,int)}
+    # tokens = {v: k for k, v in token.__dict__.items()
+    #           if isinstance(v, int)}
+    # lexicon = {**symbols, **tokens}
+    # st_list = ast.Expr(expression).value
     # st_list = parser.st2list(st)
-    pprint(st_list)
-    pprint(symbols)
-    pprint(SymbolTable)
+    # pprint(st_list)
+    # pprint(symbols)
+    table = SymbolTable()
+    pprint(table.get_symbols())
 
     def replace(l: list):
         r = []
