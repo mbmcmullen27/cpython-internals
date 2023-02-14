@@ -109,7 +109,11 @@
     - [PEP 617](https://peps.python.org/pep-0617/)
     - breaks [parser module example](examples/parser_lexer.py)
     - parser replaced by [ast module](https://docs.python.org/3.10/library/ast.html?highlight=parser#ast.parse)
-    - Symbol replaced with SymbolTable
+    - ~~Symbol replaced with SymbolTable~~
+      - Symbol held a list of possible tokens symtable implements a list of declared identifiers from an AST
       - blog about symtable
         - [part 1](https://eli.thegreenplace.net/2010/09/18/python-internals-symbol-tables-part-1/)
         - [part 2](https://eli.thegreenplace.net/2010/09/20/python-internals-symbol-tables-part-2/)
+
+      - The compiler builds a symbol table from the AST representing the Python source code
+      - The symbol table is responsible for calculating the scope of every identifier in the code
