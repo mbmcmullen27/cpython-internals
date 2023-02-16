@@ -6,14 +6,14 @@ from pprint import pprint
 def lex(expression):
     # symbols = {v: k for k, v in SymbolTable.get_symbols()
     #            if isinstance(v,int)}
-    # tokens = {v: k for k, v in token.__dict__.items()
-    #           if isinstance(v, int)}
+    tokens = {v: k for k, v in token.__dict__.items()
+              if isinstance(v, int)}
     # lexicon = {**symbols, **tokens}
-    # st_list = ast.Expr(expression).value
+    st_list = ast.Expr(expression)
     # st_list = parser.st2list(st)
     # pprint(st_list)
     # pprint(symbols)
-    table = SymbolTable()
+    table = SymbolTable(st_list)
     pprint(table.get_symbols())
 
     def replace(l: list):

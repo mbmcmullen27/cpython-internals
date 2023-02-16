@@ -115,6 +115,7 @@
         - [part 1](https://eli.thegreenplace.net/2010/09/18/python-internals-symbol-tables-part-1/)
         - [part 2](https://eli.thegreenplace.net/2010/09/20/python-internals-symbol-tables-part-2/)
 
+      - [symtable definition](./cpython/Python/symtable.c)
       - The compiler builds a symbol table from the AST representing the Python source code
       - The symbol table is responsible for calculating the scope of every identifier in the code
       - An entry object is created for each block in the Python source code
