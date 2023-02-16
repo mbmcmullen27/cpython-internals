@@ -117,3 +117,4 @@
 
       - The compiler builds a symbol table from the AST representing the Python source code
       - The symbol table is responsible for calculating the scope of every identifier in the code
+      - An entry object is created for each block in the Python source code
