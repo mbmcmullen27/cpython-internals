@@ -107,6 +107,7 @@
   ```
   - **NOTE** Python 3.9 deprecated the symbol and parser modules and 3.10 removed them
     - [PEP 617](https://peps.python.org/pep-0617/)
+    - [bugs.python.org - 40759](https://bugs.python.org/issue40759)
     - breaks [parser module example](examples/parser_lexer.py)
     - parser replaced by [ast module](https://docs.python.org/3.10/library/ast.html?highlight=parser#ast.parse)
     - ~~Symbol replaced with SymbolTable~~
@@ -121,3 +122,14 @@
       - An entry object is created for each block in the Python source code
 **NOTE** list comprehension syntax:
   ```newlist = [expression for item in iterable if condition == True]```
+
+- use `instaviz` module for a detailed view of the AST
+  ```python
+  import instaviz
+  def example():
+    a = 1
+    b = a + 1
+    return b
+
+  instaviz.show(example)
+  ```
