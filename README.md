@@ -133,3 +133,48 @@
 
   instaviz.show(example)
   ```
+
+- adding an operator
+  1. add new rule to [grammar](./cpython/Grammar/python.gram)
+      ```
+      compare_op_bitwise_or_par[CmpopExprPair*]:
+        | eq_bitwise_or
+        ...
+        | ale_bitwsie_or
+      ```
+  1. define the new ale_bitwise_or expression
+      ```
+      is_bitwise_or[CmpopExprPair*]: 'is' a=bitwise_or { _PyPegen_cmpop_expr_pair(p, Is, a) }
+      ale_bitwise_or[CmpopExprPair*]: '~=' a=bitwsie_or { _PyPegen_cmpop_expr_pair(p, ALE, a)}
+      ```
+  1. add the token to [tokens](./cpython/Grammar/Tokens)
+      ```
+      ALMOSTEQUAL             '~='
+      ```
+  1. regenerate headers
+      ```sh
+      make regen-token regen-pegen
+      ```
+      - this will automatically update the [tokenizer](./cpython/Parser/token.c)
+  1. Add `AlE` to the list of possible leaf nodes for a comparison expression defined in [Parser](./cpython/Parser/Python.asdl)
+      ```
+      cmpop = Eq | NotEq | Lt | LtE | Gt | GtE | Is | IsNot | In | NotIn | AlE
+      ```
+  1. regenerate AST
+      ```sh
+      make regen-ast
+      ```
+  1. add ALMOSTEQUAL to the switch statement matching tokens in [ast.c](./cpython/Python/ast.c)
+      ```c
+      ast_for_comp_op(struct compiling *c, const node *n) {
+        // ...
+        switch(TYPE(n)) {
+          // ...
+          case ALMOSTEQUAL:
+            return AlE;
+        }
+      }
+
+      ```
+
+  
