@@ -177,4 +177,7 @@
 
       ```
 
-  
+## The Compiler
+- (124) PyAST_CompileObject() is the main entry point to teh CPython compiler
+- future flags:
+  - `barry_as_FLUFL` "includes easter egg" [PEP401](https://peps.python.org/pep-0401/)
