@@ -181,3 +181,15 @@
 - (124) PyAST_CompileObject() is the main entry point to teh CPython compiler
 - future flags:
   - `barry_as_FLUFL` "includes easter egg" [PEP401](https://peps.python.org/pep-0401/)
+- (136) You can call the compiler in Python by calling the build-in function `compile()`
+    ```python
+    co = compile("b+1", "test.py", mode="eval")
+    ```
+  - a simple expression should have a mode of "eval", and a module, funciton or class should have a mode of "exec"
+- (136) The standard library also includes a `dis` module, which disassembles the bytecode instructions
+    ```python
+    import dis
+    dis.dis(co.co_code)
+    ```
+  - (137) if you import `dis` and give `dis()` the code object's `co_code` property, then the function disassembles it and prints the instructions on the REPL
+**LINK** [list of bytecode instructions](https://docs.python.org/3/library/dis.html#python-bytecode-instructions)
