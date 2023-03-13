@@ -193,3 +193,22 @@
     ```
   - (137) if you import `dis` and give `dis()` the code object's `co_code` property, then the function disassembles it and prints the instructions on the REPL
 **LINK** [list of bytecode instructions](https://docs.python.org/3/library/dis.html#python-bytecode-instructions)
+  - [opcode definitions](./cpython/Include/opcode.h)
+
+- (148) You can pull together all the compiler statges with the `instaviz` module:
+  ```python
+  import instaviz
+
+  def foo():
+    a = 2**4
+    b = 1 + 5
+    c = [1, 4, 6]
+    for i in c:
+      print(i)
+    else:
+      print(a)
+    return c
+
+  instaviz.show(foo)
+  ```
+  - instaviz proving to be an important tool for python debugging
