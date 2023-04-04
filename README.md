@@ -134,7 +134,7 @@
   instaviz.show(example)
   ```
 
-- adding an operator
+- adding an operator (Almost Equal)
   1. add new rule to [grammar](./cpython/Grammar/python.gram)
       ```
       compare_op_bitwise_or_par[CmpopExprPair*]:
@@ -212,3 +212,26 @@
   instaviz.show(foo)
   ```
   - instaviz proving to be an important tool for python debugging
+
+- (150-156) Implementing the almost equal operator
+  - define a new opcode in [object.h](./cpython/Include/object.h)
+  - add update COMPARE_OP opcode to support Py_AlE as a value for an operator type
+    - [object.c](./cpython/Objects/object.c) 
+      - add Py_AlE to the _Py_SwappedOp list
+      - add `~=` to opstrings list
+    - [opcode.py](./cpython/Lib/opcode.py)
+      - add `~=` to list of rich comparison operators `cmp_op`
+  - update the compiler to handle PyCmp_AlE property in a BinOp node
+    - [compile.c](./cpython/Python/compile.c)
+      - find `compiler_addcompare()` and add a case for AlE
+    - update `float_richcompare()` in [floatobject.c](./cpython/Objects/floatobject.c)
+  - update evaluation loop
+    - [ceval.c](./cpython/Python/ceval.c)
+      - update assertion in TARGET case `assert(oparg <= Py_AlE);`
+
+## The Evauluation Loop
+- (157) Execution of code in CPython happens within a central loop called the __Evaluation Loop__
+  - takes input in the form of local and global variables stored in the __value stack__
+  - bytecode instructions are executed using a stack frame system
+
+this is all starting to sound very familiar
