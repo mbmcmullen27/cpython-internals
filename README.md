@@ -235,3 +235,13 @@
   - bytecode instructions are executed using a stack frame system
 
 this is all starting to sound very familiar
+
+- (158) the evaluation loop will take a code object and convert it into a series of frame objects
+- (159) CPython can have many threads running at any one time within a single interpreter. The __interpreter state__ includes a linked list of those threads
+- (162) In Python, local and global variables are stored as a dictionary. You can access this dictionary with the built-in functions locals() and globals():
+    ```python
+    a = 1
+    print(locals()["a"])
+    ```
+
+- ["this is gonna sound real weird"](./cpython/Python/ceval.c#L4071)
