@@ -245,3 +245,29 @@ this is all starting to sound very familiar
     ```
 
 - ["this is gonna sound real weird"](./cpython/Python/ceval.c#L4071)
+
+- **NOTE:** Python has variable argument definitions for functions using the unpacking operator `*` for positional arguments, and `**` for named arguments
+  - `*args`
+    ```python
+    def example(arg, *args):
+      print(arg, args[0], args[1])
+
+    example(1, 2, 3) # 1 2 3
+    ```
+  - `**kwargs`
+    ```python
+    def example(arg, arg2=None, **kwargs):
+      print(kwargs["x"], kwargs["y"])
+
+    example(1, x=2, y=3) # 2 3
+    ```
+- **NOTE:** You can use positional-only arguments to stop users from using positional arguments with keyword syntax by using the special argument `/` that separates positional-onlky arguments from other arguments
+  ```python
+  def to_celsius(fahrenheit, /, options=None):
+    return (fahrenheit-32)*5/9
+
+  to_celsius(110) # acceptable
+
+  to_celsius(fahrenheit=110) # will raise a TypeError
+  ```
+
