@@ -271,3 +271,6 @@ this is all starting to sound very familiar
   to_celsius(fahrenheit=110) # will raise a TypeError
   ```
 
+(173-176) did we really need 4 pages to describe how a stack works?
+- (178) a call to `PREDICT` is made, which guesses that the next operation witll be `JUMP_ABSOLUTE`.
+  - how does that work? and what's the point of 'guessing?'
