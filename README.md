@@ -274,3 +274,7 @@ this is all starting to sound very familiar
 (173-176) did we really need 4 pages to describe how a stack works?
 - (178) a call to `PREDICT` is made, which guesses that the next operation witll be `JUMP_ABSOLUTE`.
   - how does that work? and what's the point of 'guessing?'
+
+## Memory Management
+- (185) "The `const` value `five_ninths` is allocated statically because it has the `static` keyword"
+  - I think this is wrong. I'm pretty sure the static keyword is about scope and doesn't actually have anything to do with memory management in c
