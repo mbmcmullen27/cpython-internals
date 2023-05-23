@@ -278,3 +278,15 @@ this is all starting to sound very familiar
 ## Memory Management
 - (185) "The `const` value `five_ninths` is allocated statically because it has the `static` keyword"
   - I think this is wrong. I'm pretty sure the static keyword is about scope and doesn't actually have anything to do with memory management in c
+
+- (190)
+  - Requested memory is matched to a `block` size
+  - blocks of the same size are all put into the same `pool` of memory
+  - Pools are grouped into `arenas`
+
+- (191) Even with modern high-speed memory, contiguous memory will load faster thanf ragmented memory
+
+- (199) You can use this function to see the running memory usage
+  ```bash
+    ./python -c "import sys; sys._debugmallocstats()"
+  ```
