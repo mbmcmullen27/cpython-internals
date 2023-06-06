@@ -290,3 +290,5 @@ this is all starting to sound very familiar
   ```bash
     ./python -c "import sys; sys._debugmallocstats()"
   ```
+  
+- (200) Python longs aren't equivalent to C's `long` type. They're a _list_ of digits \[...\] This memory structure is how Python can deal with huge numbers without having to worry about 32- or 64- bit integer constraints
