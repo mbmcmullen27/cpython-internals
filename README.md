@@ -292,3 +292,5 @@ this is all starting to sound very familiar
   ```
   
 - (200) Python longs aren't equivalent to C's `long` type. They're a _list_ of digits \[...\] This memory structure is how Python can deal with huge numbers without having to worry about 32- or 64- bit integer constraints
+
+- (203) CPython also allows you to override the allocation implementation \[...\] If your system environment requires bespoke memory checks or algorithms for memory allocation. `PyMemAllocatorEx` is a `typedef struct` with members for all the methods you would need to implement to override the allocator
