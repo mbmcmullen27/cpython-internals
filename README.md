@@ -294,3 +294,11 @@ this is all starting to sound very familiar
 - (200) Python longs aren't equivalent to C's `long` type. They're a _list_ of digits \[...\] This memory structure is how Python can deal with huge numbers without having to worry about 32- or 64- bit integer constraints
 
 - (203) CPython also allows you to override the allocation implementation \[...\] If your system environment requires bespoke memory checks or algorithms for memory allocation. `PyMemAllocatorEx` is a `typedef struct` with members for all the methods you would need to implement to override the allocator
+
+- CPython can be compiled with custom memory allocation and address sanitizers that sit between the system call to allocate memory and the kernel function to allocate memory on the system, I would be very curious to see an implementation where this was necessary and why. See pg 204 &205
+
+- (206) MemorySanitizer is a detector of uninitialized reads
+  - same with this, is there a scenario besides debugging other cpython extension that this would be necessary? Can I write python that reads memory that hasn't been initialized? if so isn't that a bug in the language?
+
+- (206) UndefinedBehaviorSanitizer is a fast undefined behavior detector
+  - these seriously must just be for debugging, if you can write python that leverages behavior not defined in the c spec I would love to see that
