@@ -303,11 +303,13 @@ this is all starting to sound very familiar
 - (206) UndefinedBehaviorSanitizer is a fast undefined behavior detector
   - these seriously must just be for debugging, if you can write python that leverages behavior not defined in the c spec I would love to see that
 
+### Garbage Collection
+Python uses a version of 'mark and sweep' algorithm
 - (208) Python adopts two strategies for manageing memory allocated by objects:
     1. Reference counting
     2. Garbage collection
 
-- What's a `pickle buffer` see pg 218
+- What's a `pickle buffer`? see pg 218
 
 - Only container type obejects get tracked for garbage collection in python because reference counting handles freeing memory for primative types
 
@@ -315,3 +317,19 @@ this is all starting to sound very familiar
   - the C API also provides a mechanism for **untracking**
 
 - (219) The CPython core development team has written a detailed guid \[on the [garbage collection algorithm](https://devguide.python.org/garbage_collector)\]
+
+- [PyGC_Collect()](./cpython/Modules/gcmodule.c) is the garbage collector entrypoint
+
+- (220) when the collection stage is run and completed you can specify callback methods using the `gc.callbacks` list.
+
+```python
+import gc
+def gc_callback(phase, info):
+  print(f"GC phase:{phase} with info:{info}")
+
+gc.callbacks.append(gc_callback)
+x = []
+x.append(x)
+del x
+gc.collect()
+```
