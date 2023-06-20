@@ -340,3 +340,36 @@ gc.collect()
 
 - (224) Generational garbage collectioon is a technique based on the observation that most objects (80 percent or more) are destroyed shortly after being created
   - if an object survives garbage collection, it moves to the next generation
+  
+**Garbage Collection API**
+- debug mode
+  ```python
+  import gc
+  gc.set_debug(gc.DEBUG_STATS)
+  ```
+
+- discover when items are collected
+  ```python
+  import gc
+  gc.set_debug(gc.DEBUG_COLLECTABLE | gc.DEBUG_SAVEALL)
+  z = [0,1,2,3]
+  z.append(z)
+  del z
+  gc.collect()
+  gc.garbage
+  ```
+
+- get threshold
+  ```python
+  gc.get_threshold()
+  ```
+
+- get current threshold counts
+  ```python
+  gc.get_count()
+  ```
+
+- run garbage collection manually (by generation)
+  ```python
+  gc.collect(0)
+  ```
