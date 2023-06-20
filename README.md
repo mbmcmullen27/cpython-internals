@@ -333,3 +333,10 @@ x.append(x)
 del x
 gc.collect()
 ```
+
+- (224) If an object has defined a finalizer in the legacy `tp_del` slot, then it can't safely be deleted and is marked as uncollectable. These are addd to the gc.garbage list for the developer to destroy manually
+  - **Note**: just like kube finalizers
+  - **Question**: how common of a pattern this is and what its called
+
+- (224) Generational garbage collectioon is a technique based on the observation that most objects (80 percent or more) are destroyed shortly after being created
+  - if an object survives garbage collection, it moves to the next generation
