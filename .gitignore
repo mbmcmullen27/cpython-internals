@@ -1,2 +1,3 @@
 cpython
 examples/__pycache__
+*/*.out
