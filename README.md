@@ -373,3 +373,19 @@ gc.collect()
   ```python
   gc.collect(0)
   ```
+
+### Paralellism and Concurrenncy
+
+- To have **parallelism**, you need multiple computational units (CPUS or cores)
+- To have **concurrency**, you need a way of scheduling tasks so that idle ones don't lock the resources
+
+(229) There are 4 models bundled with CPython:  
+|Approach|Module|Concurrent|Parallel|
+|--|--|--|--|
+|Threading|`threading`|Yes|No|
+|Multiprocessing|`multiprocessing`|Yes|Yes|
+|Async|`asyncio`|Yes|No|
+|Subinterpreters|`subinterpreters`|Yes|Yes|
+
+**see also**: 
+> The IEEE POSIX Standard (1003.1-2017) defines the interface and standard behaviors for processes and threads
