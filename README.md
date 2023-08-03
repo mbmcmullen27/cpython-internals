@@ -389,3 +389,5 @@ gc.collect()
 
 **see also**: 
 > The IEEE POSIX Standard (1003.1-2017) defines the interface and standard behaviors for processes and threads
+
+(240) Both the preparation data and process object are serialized using the `pickle` module and written to the parent process's pipe stream
