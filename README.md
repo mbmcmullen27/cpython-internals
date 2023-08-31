@@ -391,3 +391,10 @@ gc.collect()
 > The IEEE POSIX Standard (1003.1-2017) defines the interface and standard behaviors for processes and threads
 
 (240) Both the preparation data and process object are serialized using the `pickle` module and written to the parent process's pipe stream
+  - python is not a serious language
+
+(245) There are two types of communication between processes, depending on the nature of the task: **queues** and **pipes**
+
+- **Semaphores**
+  - [implementation](./cpython/Modules/_multiprocessing/semaphore.c) of a semaphore
+  - (245) semaphores are a signaling method that uses flags to transmit messages 
