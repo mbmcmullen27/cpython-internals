@@ -398,3 +398,7 @@ gc.collect()
 - **Semaphores**
   - [implementation](./cpython/Modules/_multiprocessing/semaphore.c) of a semaphore
   - (245) semaphores are a signaling method that uses flags to transmit messages 
+
+- Multiprocessing in python means multiple interpreters
+- (259) The Python evaluation loop is not thread-safe. There are many parts of the interpreter state, such as the garbage collector, that are shared and global. To get around this, the CPython developers implemented a mega-lock called teh **global interpreter lock (GIL)**. Before any opcode is executed in the frame-evaluation loop, the GIL is acquired by the thread. Once the opcode has been executed, the GIL is released.
+- Summary thread state description on (265)
